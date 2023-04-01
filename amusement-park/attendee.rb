@@ -16,6 +16,6 @@ class Attendee
   end
 
   def revoke_pass!
-    @pass_id = nil;
+    @pass_id = nil
   end
 end
