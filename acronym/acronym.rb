@@ -7,10 +7,6 @@ To get started with TDD, see the `README.md` file in your
 =end
 class Acronym
     def self.abbreviate(string)
-        acronym = []
-        string.gsub(/[,-]/, ' ').split(' ').each do |palavra|
-            acronym << palavra[0].upcase
-        end
-        acronym.join
+        string.gsub(/[,-]/, ' ').split(' ').map {|palavra| palavra[0].upcase}.join
     end
 end
