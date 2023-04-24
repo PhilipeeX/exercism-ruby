@@ -1,4 +1,4 @@
-require 'pry-byebug'
+# require 'pry-byebug'
 =begin
 Write your code for the 'Isogram' exercise in this file. Make the tests in
 `isogram_test.rb` pass.
