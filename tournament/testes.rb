@@ -34,6 +34,5 @@ while i < partidas.size
   end
   i += 1
 end
-
-
+times_pontos = times_pontos.sort_by { |chave, valor| valor[:p] }.reverse
 pp times_pontos
