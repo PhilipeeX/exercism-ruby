@@ -7,15 +7,17 @@ To get started with TDD, see the `README.md` file in your
 =end
 require 'pry-byebug';
 module Tournament
-  HEADER = 'Team                           | MP |  W |  D |  L |  P'.freeze
+  time = 'Team'
+  HEADER = "#{time.ljust(31)}| MP |  W |  D |  L |  P\n".freeze
     @@times_pontos = {
-      'Allegoric Alaskans' => { mp: 0, w: 0, d: 0, l: 0, p:0 },
+      # 'Allegoric Alaskans' => { mp: 0, w: 0, d: 0, l: 0, p:0 },
       # 'Blithering Badgers' => { mp: 0, w: 0, d: 0, l: 0, p:0 },
       # 'Courageous Californians' => { mp: 0, w: 0, d: 0, l: 0, p:0 },
       # 'Devastating Donkeys' => { mp: 0, w: 0, d: 0, l: 0, p:0 }
     }
   # binding.pry
   def self.tally(input)
+    @@times_pontos = {}
     partidas = input.split(/\n/)
     i = 0
     while i < partidas.size
@@ -48,17 +50,13 @@ module Tournament
     end
     # Ordenar por pontuação(caso empate, será ordem alfabetica)
     @@linhas = []
-    @@times_pontos = @@times_pontos.sort_by { |chave, valor| valor[:p] }.reverse.each do |time|
-      @@linhas << "#{time[0]}                           |  #{time[1][:mp]} |  #{time[1][:w]} |  #{time[1][:d]} |  #{time[1][:l]} |  #{time[1][:p]}"
-    end 
-
-    return @@linhas.unshift(HEADER).join('\n').to_s
-    # print HEADER + '\n'
-    # # binding.pry
-    # print @@times_pontos.each do |time|
-    # "#{time[0]}                           |  #{time[1][:mp]} |  #{time[1][:w]} |  #{time[1][:d]} |  #{time[1][:l]} |  #{time[1][:p]} " + '\n'
-    # end
-    # puts 'TALLY'
+    @@linhas << HEADER
+    if @@times_pontos.size >= 1
+      @@times_pontos.sort_by { |chave, valor| valor[:p] }.reverse.each do |time|
+        @@linhas << "#{time[0].ljust(31)}|  #{time[1][:mp]} |  #{time[1][:w]} |  #{time[1][:d]} |  #{time[1][:l]} |  #{time[1][:p]}\n"
+      end
+    end
+    # binding.pry
+    @@linhas.join.gsub("\t", '     ')
   end
-
 end

@@ -1,5 +1,5 @@
 require 'pp'
-
+HEADER = "Team\t\t\t\t| MP |  W |  D |  L |  P".freeze
 times_pontos = {
   'Allegoric Alaskans' => {mp: 0, w: 0, d: 0, l: 0, p:0},
   'Blithering Badgers' => {mp: 0, w: 0, d: 0, l: 0, p:0},
@@ -35,4 +35,7 @@ while i < partidas.size
   i += 1
 end
 times_pontos = times_pontos.sort_by { |chave, valor| valor[:p] }.reverse
-pp times_pontos
+puts HEADER
+times_pontos.each do |time|
+  puts "#{time[0]}\t\t|  #{time[1][:mp]} |  #{time[1][:w]} |  #{time[1][:d]} |  #{time[1][:l]} |  #{time[1][:p]}"
+end
