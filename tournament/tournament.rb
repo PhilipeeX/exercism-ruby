@@ -53,7 +53,7 @@ module Tournament
     @@linhas << HEADER
     if @@times_pontos.size >= 1
       @@times_pontos.sort_by { |chave, valor| valor[:p] }.reverse.each do |time|
-        @@linhas << "#{time[0].ljust(31)}|  #{time[1][:mp]} |  #{time[1][:w]} |  #{time[1][:d]} |  #{time[1][:l]} |  #{time[1][:p]}\n"
+        @@linhas << "#{time[0].ljust(31)}|  #{time[1][:mp]} |  #{time[1][:w]} |  #{time[1][:d]} |  #{time[1][:l]} |#{time[1][:p].to_s.rjust(3)}\n"
       end
     end
     # binding.pry
