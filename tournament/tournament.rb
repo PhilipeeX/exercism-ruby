@@ -5,17 +5,11 @@ Write your code for the 'Tournament' exercise in this file. Make the tests in
 To get started with TDD, see the `README.md` file in your
 `ruby/tournament` directory.
 =end
-require 'pry-byebug';
 module Tournament
   time = 'Team'
   HEADER = "#{time.ljust(31)}| MP |  W |  D |  L |  P\n".freeze
-    @@times_pontos = {
-      # 'Allegoric Alaskans' => { mp: 0, w: 0, d: 0, l: 0, p:0 },
-      # 'Blithering Badgers' => { mp: 0, w: 0, d: 0, l: 0, p:0 },
-      # 'Courageous Californians' => { mp: 0, w: 0, d: 0, l: 0, p:0 },
-      # 'Devastating Donkeys' => { mp: 0, w: 0, d: 0, l: 0, p:0 }
-    }
-  # binding.pry
+  @@times_pontos = {}
+
   def self.tally(input)
     @@times_pontos = {}
     partidas = input.split(/\n/)
@@ -48,7 +42,7 @@ module Tournament
       end
       i += 1
     end
-    # Ordenar por pontuação(caso empate, será ordem alfabetica)
+
     @@linhas = []
     @@linhas << HEADER
     if @@times_pontos.size >= 1
@@ -56,7 +50,7 @@ module Tournament
         @@linhas << "#{time[0].ljust(31)}|  #{time[1][:mp]} |  #{time[1][:w]} |  #{time[1][:d]} |  #{time[1][:l]} |#{time[1][:p].to_s.rjust(3)}\n"
       end
     end
-    # binding.pry
+    
     @@linhas.join.gsub("\t", '     ')
   end
 end
