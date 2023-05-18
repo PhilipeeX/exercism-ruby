@@ -8,26 +8,23 @@ To get started with TDD, see the `README.md` file in your
 
 #Module quue define a resistência em oms a partir das cores de um determinado resistor
 module ResistorColorDuo
+  VALORES_PADRONIZADOS = [
+    ['black', 0],
+    ['brown', 1],
+    ['red', 2],
+    ['orange', 3],
+    ['yellow', 4],
+    ['green', 5],
+    ['blue', 6],
+    ['violet', 7],
+    ['grey', 8],
+    ['white', 9]
+  ]
   def self.value(array)
-    valores_padronizados = [
-      ['black', 0],
-      ['brown', 1],
-      ['red', 2],
-      ['orange', 3],
-      ['yellow', 4],
-      ['green', 5],
-      ['blue', 6],
-      ['violet', 7],
-      ['grey', 8],
-      ['white', 9]
-    ]
-    # require 'pry-byebug'; binding.pry
     resistencia = []
-    valores_padronizados.each do |cor, valor|
-      if cor == array[0]
-        resistencia << valor.to_s
-      elsif cor == array[1]
-        resistencia << valor.to_s
+    array.take(2).each do |cor_resistor|
+      VALORES_PADRONIZADOS.each do |cor, valor|
+        cor_resistor == cor ? resistencia << valor.to_s : nil
       end
     end
     resistencia.join.to_i
