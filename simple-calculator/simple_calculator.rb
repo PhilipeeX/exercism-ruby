@@ -1,18 +1,20 @@
 
 class SimpleCalculator
+  class UnsupportedOperation < StandardError
+  end
+  class ArgumentError < StandardError
+  end
+  
   ALLOWED_OPERATIONS = ['+', '/', '*'].freeze
 
+  # ALLOWED_OPERATIONS.any? { |operacao| operacao == operation }
+  # "#{first_operand} #{operation} #{second_operand} = #{first_operand.send(operation, second_operand)}"
   def self.calculate(first_operand, second_operand, operation)
-    if second_operand == 0
-      raise "Division by zero is not allowed."
-    end
-    begin
-      # require 'pry-byebug'; binding.pry
-      if ALLOWED_OPERATIONS.any? {|operacao| operacao == operation}
-        "#{first_operand} #{operation} #{second_operand} = #{first_operand.send(operation, second_operand)}"
-      end
-    rescue UnsupportedOperation => e
-      puts "Operação não suportada: #{e.message}"
+    if ALLOWED_OPERATIONS.any? { |operacao| operacao == operation }
+      "#{first_operand} #{operation} #{second_operand} = #{first_operand.send(operation, second_operand)}"
+    else
+      raise UnsupportedOperation
     end
   end
+  
 end
