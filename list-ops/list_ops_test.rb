@@ -7,27 +7,27 @@ class ListOpsTest < Minitest::Test
   end
 
   def test_count_normal
-    skip
+    # skip
     assert_equal 5, ListOps.arrays(Array.new(5))
   end
 
   def test_count_gigantic
-    skip
+    # skip
     assert_equal 1_000_000, ListOps.arrays(Array.new(1_000_000))
   end
 
   def test_reverse_empty
-    skip
+    # skip
     assert_empty ListOps.reverser([])
   end
 
   def test_reverse_normal
-    skip
+    # skip
     assert_equal [5, 4, 3, 2, 1], ListOps.reverser([1, 2, 3, 4, 5])
   end
 
   def test_reverse_gigantic
-    skip
+    # skip
     expected = (1..1_000_000).to_a.reverse
     assert_equal expected, ListOps.reverser((1..1_000_000).to_a)
   end
