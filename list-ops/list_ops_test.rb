@@ -33,34 +33,34 @@ class ListOpsTest < Minitest::Test
   end
 
   def test_concat_empty
-    skip
+    # skip
     assert_empty ListOps.concatter([], [])
   end
 
   def test_concat_normal
-    skip
+    # skip
     assert_equal [12, 34, 56, 78], ListOps.concatter([12, 34], [56, 78])
   end
 
   def test_concat_gigantic
-    skip
+    # skip
     input1 = (1..1_000_000).to_a
     input2 = (1_000_001..2_000_000).to_a
     assert_equal (1..2_000_000).to_a, ListOps.concatter(input1, input2)
   end
 
   def test_mapper_empty
-    skip
+    # skip
     assert_empty ListOps.mapper([])
   end
 
   def test_mapper_normal
-    skip
+    # skip
     assert_equal [2, 3, 4, 5, 6], ListOps.mapper([1, 2, 3, 4, 5]) { |n| n + 1 }
   end
 
   def test_mapper_gigantic
-    skip
+    # skip
     result = ListOps.mapper((1..1_000_000).to_a) { |n| n + 1 }
     assert_equal (2..1_000_001).to_a, result
   end

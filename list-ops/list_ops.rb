@@ -21,5 +21,26 @@ module ListOps
         end
         return new_array
     end
+
+    def self.concatter(array1, array2)
+        i = 0
+        while i < array2.length
+            array1.push(array2[i])
+            i += 1
+        end
+        return array1
+    end
+
+    def self.mapper(array)
+        if block_given?
+            i = 0
+            while i < array.length
+                array[i] = yield(array[i])
+                i += 1
+            end
+        end
+        return array
+    end
+
 end
 
