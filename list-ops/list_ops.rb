@@ -5,14 +5,12 @@ Write your code for the 'List Ops' exercise in this file. Make the tests in
 To get started with TDD, see the `README.md` file in your
 `ruby/list-ops` directory.
 =end
-require 'pry-byebug'
 module ListOps
     def self.arrays(arrays)
         arrays.size
     end
 
     def self.reverser(array)
-        # binding.pry
         i = array.length - 1
         new_array = []
         while i >= 0
