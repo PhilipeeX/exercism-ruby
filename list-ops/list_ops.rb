@@ -42,5 +42,39 @@ module ListOps
         return array
     end
 
+    def self.filterer(array)
+        new_array = []
+        if block_given?
+            
+            i = 0
+            while i < array.length
+                new_array << array[i] if yield(array[i])
+                i += 1
+            end
+            
+        end
+        return new_array
+    end
+
+    def self.sum_reducer(array)
+        sum = 0
+        i = 0
+        while i < array.length
+            sum += array[i]
+            i += 1
+        end
+        return sum
+    end
+
+    def self.factorial_reducer(array)
+        i = array.size - 1
+        factorial = 1
+        factorial = array[i] if array.size >= 1
+        while i > 0 
+            factorial *= array[i-1]
+            i -= 1
+        end
+        return factorial
+    end
 end
 

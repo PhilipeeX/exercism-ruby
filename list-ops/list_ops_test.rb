@@ -66,39 +66,39 @@ class ListOpsTest < Minitest::Test
   end
 
   def test_filterer_empty
-    skip
+    # skip
     assert_empty ListOps.filterer([])
   end
 
   def test_filterer_normal
-    skip
+    # skip
     result = ListOps.filterer([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], &:odd?)
     assert_equal [1, 3, 5, 7, 9], result
   end
 
   def test_filterer_gigantic
-    skip
+    # skip
     result = ListOps.filterer((1..10_000).to_a, &:even?)
     assert_equal (1..10_000).to_a.select(&:even?), result
   end
 
   def test_sum_reducer_empty
-    skip
+    # skip
     assert_equal 0, ListOps.sum_reducer([])
   end
 
   def test_sum_reducer_normal
-    skip
+    # skip
     assert_equal 55, ListOps.sum_reducer([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   end
 
   def test_factorial_reducer_empty
-    skip
+    # skip
     assert_equal 1, ListOps.factorial_reducer([])
   end
 
   def test_factorial_reducer_normal
-    skip
+    # skip
     input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     assert_equal 3_628_800, ListOps.factorial_reducer(input)
   end
